@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Exemple API / HTML</title>
+    <style>
+    body {
+      max-width: 700px;
+      margin: 0 auto;
+      font-family: 'Helvetica';
+    }
+    .doc-section {
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    #secondary {
+      border: 1px solid #ddd;
+      background: #ddf;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .paragraphe-couleur {
+      background: #def;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div id="main">
+
+      <h1>Exemples des méthodes pour trouver des éléments</h1>
+
+      <h2>Sous-titre dans div #main</h2>
+
+      <div class="doc-section">
+        <h2>Titre de la 1ère div <code>.une-class</code></h2>
+        <p class="paragraphe-couleur">1er paragraphe dans la 1ère div <code>.une-class</code></p>
+        <p>2ème paragraphe dans la 1ère div <code>.une-class</code></p>
+        <p class="paragraphe-couleur">3ème paragraphe dans la 1ère div <code>.une-class</code></p>
+        <p>4ème paragraphe dans la 1ère div <code>.une-class</code></p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Titre de la 2ème div <code>.une-class</code></h2>
+        <p>1er paragraphe dans la 2ème div <code>.une-class</code></p>
+        <p class="paragraphe-couleur">2ème paragraphe dans la 2ème div <code>.une-class</code></p>
+        <p>3ème paragraphe dans la 2ème div <code>.une-class</code></p>
+      </div>
+
+    </div>
+
+    <div id="secondary">
+      <h2>div <code>#secondary</code> sans classe</h2>
+      <p>1er paragraphe dans la div <code>#secondary</code></p>
+      <p class="paragraphe-couleur">2ème paragraphe dans la div <code>#secondary</code></p>
+    </div>
+
+    <!-- LE SCRIPT QUI CONTIENT NOTRE APPLI JS -->
+    <script>
+      
+      // ----- Utilisation de getElementById() -----
+      console.log('#### Utilisation de getElementById()')
+
+      // Afficher dans la console la div #main
+      const divMain = document.getElementById('main')
+      console.log('div #main', divMain)
+
+      // Afficher dans la console la div #secondary
+      const divSecondary = document.getElementById('secondary')
+      console.log('div #secondary', divSecondary)
+
+      console.log('')
+
+      // ----- Utilisation de getElementByClassName() -----
+      console.log('#### Utilisation de getElementByClassName()')
+
+      // Récupérer les div avec classe .doc-section
+      const docSections = document.getElementsByClassName('doc-section')
+      console.log('divs .doc-section', docSections)
+
+      // Récupérer les paragraphes avec classe .paragraphe-couleur dans TOUT le document
+      const allColored = document.getElementsByClassName('paragraphe-couleur')
+      console.log('paragraphes .paragraphe-couleur', allColored)
+
+      console.log('')
+
+
+      // Récupérer UNIQUEMENT les paragraphes avec classe .paragraphe-couleur
+      // se trouvant dans la 1ère div .doc-section
+      // Remarque qu'on a utilisé getElementsByClassName() sur un autre élément que le
+      // document lui-même
+      const coloredIn1stSection = docSections[0].getElementsByClassName('paragraphe-couleur')
+      console.log('paragraphes .paragraphe-couleur dans 1ère div .doc-section', coloredIn1stSection)
+
+      // Même principe:
+      const coloredInSecondary = divSecondary.getElementsByClassName('paragraphe-couleur')
+      console.log('paragraphes .paragraphe-couleur dans div #secondary', coloredInSecondary)
+      console.log('')
+
+
+      // ----- Utilisation de getElementByTagName() -----
+      console.log('#### Utilisation de getElementByTagName()')
+
+      // Récupérer toutes les divs du document
+      const allDivs = document.getElementsByTagName('div')
+      console.log('Toutes les divs du document', allDivs)
+
+      // Récupérer tous les paragraphes du document
+      const allParagraphs = document.getElementsByTagName('p')
+      console.log('Tous les paragraphes du document', allParagraphs)
+
+      console.log('')
+
+      // Récupérer UNIQUEMENT les paragraphes se trouvant dans la 1ère div .doc-section
+      const paragraphsIn1stSection = docSections[0].getElementsByTagName('p')
+      console.log('Tous les paragraphes dans 1ère div .doc-section', paragraphsIn1stSection)
+
+      // Même principe. Ici on récupère un tableau d'UN élément:
+      const titlesInSecondary = divSecondary.getElementsByTagName('h2')
+      console.log('Titres h2 dans div #secondary', titlesInSecondary)
+      console.log()
+
+      //  ----- Exercice 1: trouver des éléments -----
+
+      // Récupérer le titre `h2` de la div `#main`
+      // Récupérer les éléments `code` dans tout le document
+      // Récupérer les éléments `code` dans la div `#secondary`
+      // Récupérer les éléments `code` dans la 2ème div `.doc-section`
+
+      // ----- Exercice 2: modifier un ou des éléments -----
+
+      // Changer le contenu du titre `h2` de la div `#main` que tu as récupéré dans la section précédente
+      // Changer le contenu des paragraphes stockés dans la `const coloredInSecondary`.
+      // Changer le contenu du 2ème paragraphe de la div `#secondary`
+
+    </script>
+
+  </body>
+</html>

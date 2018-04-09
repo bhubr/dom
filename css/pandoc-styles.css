@@ -1,0 +1,33 @@
+body {
+  max-width: 60%;
+  margin-left: 22%;
+  padding-left: 8%;
+  font-family: 'Helvetica';
+  font-size: 16px;
+  border-left: 1px solid #ddd;
+}
+
+#TOC {
+  position: fixed;
+  padding: 20px;
+  top: 0;
+  left: 0;
+  width: 20%;
+}
+#TOC ul {
+  padding-left: 20px;
+}
+#TOC > ul {
+  padding-left: 0;
+}
+#TOC li {
+  list-style-type: none;
+  padding: 3px 0;
+}
+
+blockquote {
+  padding: 10px;
+  background: #ced;
+  border-left: 6px solid #acb;
+  color: #333;
+}
