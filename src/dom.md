@@ -74,11 +74,11 @@ Sinon, une fois qu'on a un élément comme `divMain` ci-dessus, on peut appeler 
     const rowsInMain = divMain.getElementsByClassName('row')
     const paragraphsInMain = divMain.getElementsByTagName('p')
 
-**Ouvre le fichier `exemples/elements.html`**, à la fois dans ton éditeur et dans le navigateur. Active la console de ce dernier ! Mets côte à côte ton éditeur et le navigateur pour mettre en relation le code et ce qu'il fait.
+**Ouvre le fichier `exemples/elements/index.html`**, à la fois dans ton éditeur et dans le navigateur. Active la console de ce dernier ! Mets côte à côte ton éditeur et le navigateur pour mettre en relation le code et ce qu'il fait.
 
 ### Exercice 1: récupérer des éléments
 
-En t'inspirant des exemples de code dans `elements.html`, ajoute du code à la fin du fichier pour:
+En t'inspirant des exemples de code dans `exemples/elements/index.html`, ajoute du code à la fin du fichier pour:
 
 * Récupérer dans une variable le titre `h2` de la div `#main`
 * Récupérer dans une variable les éléments `code` dans tout le document
@@ -87,7 +87,7 @@ En t'inspirant des exemples de code dans `elements.html`, ajoute du code à la f
 
 ## Modifier un ou plusieurs éléments
 
-Toujours avec `elements.html` : **dans la console**, essaie de modifier le contenu des éléments. Cet exemple modifie le `innerHTML` d'un élément:
+Toujours avec `exemples/elements/index.html` : **dans la console**, essaie de modifier le contenu des éléments. Cet exemple modifie le `innerHTML` d'un élément:
 
     // Un seul élément
     divSecondary.innerHTML = '<h1>I am the king of HTML</h1>'
@@ -110,7 +110,7 @@ Si tu veux modifier juste *un* élément d'une collection, tu peux donc le faire
 
 ### Exercice 2: modifier un ou plusieurs éléments
 
-Retourne dans `elements.html`, ajoute du code à la fin du fichier pour:
+Retourne dans `exemples/elements/index.html`, ajoute du code à la fin du fichier pour:
 
 * Changer le contenu du titre `h2` de la div `#main` que tu as récupéré dans la section précédente
 * Changer le contenu des paragraphes stockés dans la `const coloredInSecondary`.

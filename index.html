@@ -108,9 +108,9 @@ const paragraphs = document.getElementsByTagName(&#39;p&#39;)</code></pre>
 <p>Sinon, une fois qu'on a un élément comme <code>divMain</code> ci-dessus, on peut appeler les méthodes <code>getElementsByClassName</code> et <code>getElementsByTagName</code>. En ce qui concerne <code>getElementById</code> on l'appelle plutôt directement sur <code>document</code> car il y a forcément <em>un seul</em> élément avec un certain <code>id</code> dans la page.</p>
 <pre><code>const rowsInMain = divMain.getElementsByClassName(&#39;row&#39;)
 const paragraphsInMain = divMain.getElementsByTagName(&#39;p&#39;)</code></pre>
-<p><strong>Ouvre le fichier <code>exemples/elements.html</code></strong>, à la fois dans ton éditeur et dans le navigateur. Active la console de ce dernier ! Mets côte à côte ton éditeur et le navigateur pour mettre en relation le code et ce qu'il fait.</p>
+<p><strong>Ouvre le fichier <code>exemples/elements/index.html</code></strong>, à la fois dans ton éditeur et dans le navigateur. Active la console de ce dernier ! Mets côte à côte ton éditeur et le navigateur pour mettre en relation le code et ce qu'il fait.</p>
 <h3 id="exercice-1-récupérer-des-éléments">Exercice 1: récupérer des éléments</h3>
-<p>En t'inspirant des exemples de code dans <code>elements.html</code>, ajoute du code à la fin du fichier pour:</p>
+<p>En t'inspirant des exemples de code dans <code>exemples/elements/index.html</code>, ajoute du code à la fin du fichier pour:</p>
 <ul>
 <li>Récupérer dans une variable le titre <code>h2</code> de la div <code>#main</code></li>
 <li>Récupérer dans une variable les éléments <code>code</code> dans tout le document</li>
@@ -118,7 +118,7 @@ const paragraphsInMain = divMain.getElementsByTagName(&#39;p&#39;)</code></pre>
 <li>Récupérer dans une variable les éléments <code>code</code> dans la 2ème div <code>.doc-section</code></li>
 </ul>
 <h2 id="modifier-un-ou-plusieurs-éléments">Modifier un ou plusieurs éléments</h2>
-<p>Toujours avec <code>elements.html</code> : <strong>dans la console</strong>, essaie de modifier le contenu des éléments. Cet exemple modifie le <code>innerHTML</code> d'un élément:</p>
+<p>Toujours avec <code>exemples/elements/index.html</code> : <strong>dans la console</strong>, essaie de modifier le contenu des éléments. Cet exemple modifie le <code>innerHTML</code> d'un élément:</p>
 <pre><code>// Un seul élément
 divSecondary.innerHTML = &#39;&lt;h1&gt;I am the king of HTML&lt;/h1&gt;&#39;</code></pre>
 <p>Maintenant, les variables où on a stocké les retours de <code>getElementsByClassName()</code> ou <code>getElementsByTagName()</code> ne contiennent pas <em>un</em> élément mais une <em>collection</em> d'éléments... À peu de choses près, cela ressemble à un tableau, et donc, on peut faire des boucles dessus:</p>
@@ -132,7 +132,7 @@ for(let i=0;i&lt;allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragra
 <p>Si tu veux modifier juste <em>un</em> élément d'une collection, tu peux donc le faire via son indice dans le tableau:</p>
 <pre><code>allParagraphs[1].innerHTML = &#39;&lt;em&gt;Du texte en italique pour remplacer le 2ème paragraphe&lt;/em&gt;&#39;</code></pre>
 <h3 id="exercice-2-modifier-un-ou-plusieurs-éléments">Exercice 2: modifier un ou plusieurs éléments</h3>
-<p>Retourne dans <code>elements.html</code>, ajoute du code à la fin du fichier pour:</p>
+<p>Retourne dans <code>exemples/elements/index.html</code>, ajoute du code à la fin du fichier pour:</p>
 <ul>
 <li>Changer le contenu du titre <code>h2</code> de la div <code>#main</code> que tu as récupéré dans la section précédente</li>
 <li>Changer le contenu des paragraphes stockés dans la <code>const coloredInSecondary</code>.</li>
