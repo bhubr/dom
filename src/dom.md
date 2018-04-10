@@ -133,6 +133,8 @@ Quand le navigateur charge une nouvelle page, ou recharge la page courante, tout
 
 > Une Single-Page App fonctionne sur un mode radicalement différent ! Au lieu de recharger un nouveau document HTML à chaque clic sur un lien, **tout** se passe sur la même page HTML, d'où le nom : on a un fichier `index.html` minimal, à partir duquel on charge une application JS, qui se charge de créer **dynamiquement** tout le HTML de la page.
 
-### Exemple / Exercice 1
+### Exemple
 
-Dans le répertoire `exemples/html-vers-js/`
+Dans le répertoire `exemples/html-statique-vers-js/`, ouvre `index.html`.
+
+C'est la base d'une application d'exemple, semblable à ce qu'on a vu en dojo. Celle qu'on a vu en dojo comportait deux pages: index et about. Celle-ci en comporte deux autres, pas pour ajouter une complexité inutile, mais parce qu'on aura besoin, plus tard, d'exemples.
