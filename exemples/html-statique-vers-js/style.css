@@ -37,14 +37,17 @@ footer .inner {
 .movies {
   display: flex;
 }
+.movie-page,
 .movie-thumb {
   border: 1px solid #ddd;
   display: flex;
   padding: 20px;
   margin-right: 10px;
 }
-
 .movie-thumb img {
   max-height: 250px;
   padding: 0 10px 0 0;
+}
+.movie-page img {
+  padding: 0 20px 0 0;
 }
