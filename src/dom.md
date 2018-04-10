@@ -74,11 +74,15 @@ Sinon, une fois qu'on a un élément comme `divMain` ci-dessus, on peut appeler 
     const rowsInMain = divMain.getElementsByClassName('row')
     const paragraphsInMain = divMain.getElementsByTagName('p')
 
-**Ouvre le fichier `exemples/elements/index.html`**, à la fois dans ton éditeur et dans le navigateur. Active la console de ce dernier ! Mets côte à côte ton éditeur et le navigateur pour mettre en relation le code et ce qu'il fait.
-
 ### Exercice 1: récupérer des éléments
 
-**Il faut travailler dans `exemples/elements/index.html`, en ajoutant du code à la fin.** Les variables sont définies mais tu dois les affecter
+> * Il faut travailler dans `exemples/elements/index.html`, **en ajoutant du code à la fin.**
+> * Ouvre ce fichier à la fois dans ton éditeur et dans le navigateur, et **active la console** de ce dernier !
+> * Mets côte à côte ton éditeur et le navigateur pour mettre en relation le code et ce qu'il fait.
+> * Les variables sont définies mais tu dois les affecter.
+> * Pour lancer les tests (communs aux exercices 1 et 2) : bouton "Test" en bas à droite !!
+
+Voici ce qui t'es demandé.
 
 * Récupérer dans une variable le *premier* titre `h2` de la div `#main` (indice: trouver *tous* les `h2` de `#main` puis prendre celui à l'index 0 dans ce qui t'a été retourné)
 * Récupérer dans une variable les éléments `code` dans tout le document
