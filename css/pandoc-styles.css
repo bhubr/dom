@@ -31,3 +31,6 @@ blockquote {
   border-left: 6px solid #acb;
   color: #333;
 }
+img {
+  max-width: 100%;
+}
