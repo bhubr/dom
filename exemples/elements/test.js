@@ -28,23 +28,23 @@ mocha.setup('bdd')
 describe('Exercices trouver&modifier éléments', () => {
 
   it('mainTitleH2 contient le 1er h2 de #main', () => {
-    const expectedMainTitleH2 = divMain.getElementsByTagName('h2')[0]
     assert.ok(typeof mainTitleH2 !== 'undefined')
+    const expectedMainTitleH2 = divMain.getElementsByTagName('h2')[0]
     assert.equal(mainTitleH2, expectedMainTitleH2)
   })
 
   it('allCodes contient tous les codes', () => {
-    assert.ok(allCodes !== 'undefined')
+    assert.ok(typeof allCodes !== 'undefined')
     assert.equal(allCodesLen, 11)
   })
 
   it('codesInSecondary contient les codes de #secondary', () => {
-    assert.ok(codesInSecondary !== 'undefined')
+    assert.ok(typeof codesInSecondary !== 'undefined')
     assert.equal(codesInSecondary.length, 2)
   })
 
   it('codesIn2ndSec contient les codes de la 2ème .doc-section', () => {
-    assert.ok(codesIn2ndSec !== 'undefined')
+    assert.ok(typeof codesIn2ndSec !== 'undefined')
     assert.equal(codesIn2ndSec.length, 4)
   })
 
