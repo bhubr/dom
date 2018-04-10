@@ -61,7 +61,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#modifier-un-ou-plusieurs-éléments">Modifier un ou plusieurs éléments</a><ul>
 <li><a href="#exercice-2-modifier-un-ou-plusieurs-éléments">Exercice 2: modifier un ou plusieurs éléments</a></li>
 </ul></li>
-<li><a href="#dune-application-html-statique-à-une-spa-js">D'une application HTML statique à une &quot;SPA&quot; JS</a></li>
+<li><a href="#dune-application-html-statique-à-une-spa-js">D'une application HTML statique à une &quot;SPA&quot; JS</a><ul>
+<li><a href="#exemple-exercice-1">Exemple / Exercice 1</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -110,12 +112,13 @@ const paragraphs = document.getElementsByTagName(&#39;p&#39;)</code></pre>
 const paragraphsInMain = divMain.getElementsByTagName(&#39;p&#39;)</code></pre>
 <p><strong>Ouvre le fichier <code>exemples/elements/index.html</code></strong>, à la fois dans ton éditeur et dans le navigateur. Active la console de ce dernier ! Mets côte à côte ton éditeur et le navigateur pour mettre en relation le code et ce qu'il fait.</p>
 <h3 id="exercice-1-récupérer-des-éléments">Exercice 1: récupérer des éléments</h3>
-<p>En t'inspirant des exemples de code dans <code>exemples/elements/index.html</code>, ajoute du code à la fin du fichier pour:</p>
+<p><strong>Il faut travailler dans <code>exemples/elements/index.html</code>, en ajoutant du code à la fin.</strong> Les variables sont définies mais tu dois les affecter</p>
 <ul>
-<li>Récupérer dans une variable le titre <code>h2</code> de la div <code>#main</code></li>
+<li>Récupérer dans une variable le <em>premier</em> titre <code>h2</code> de la div <code>#main</code> (indice: trouver <em>tous</em> les <code>h2</code> de <code>#main</code> puis prendre celui à l'index 0 dans ce qui t'a été retourné)</li>
 <li>Récupérer dans une variable les éléments <code>code</code> dans tout le document</li>
 <li>Récupérer dans une variable les éléments <code>code</code> dans la div <code>#secondary</code></li>
 <li>Récupérer dans une variable les éléments <code>code</code> dans la 2ème div <code>.doc-section</code></li>
+<li>Récupérer dans une variable le 3ème paragraphe de la 2ème div <code>.doc-section</code></li>
 </ul>
 <h2 id="modifier-un-ou-plusieurs-éléments">Modifier un ou plusieurs éléments</h2>
 <p>Toujours avec <code>exemples/elements/index.html</code> : <strong>dans la console</strong>, essaie de modifier le contenu des éléments. Cet exemple modifie le <code>innerHTML</code> d'un élément:</p>
@@ -123,20 +126,20 @@ const paragraphsInMain = divMain.getElementsByTagName(&#39;p&#39;)</code></pre>
 divSecondary.innerHTML = &#39;&lt;h1&gt;I am the king of HTML&lt;/h1&gt;&#39;</code></pre>
 <p>Maintenant, les variables où on a stocké les retours de <code>getElementsByClassName()</code> ou <code>getElementsByTagName()</code> ne contiennent pas <em>un</em> élément mais une <em>collection</em> d'éléments... À peu de choses près, cela ressemble à un tableau, et donc, on peut faire des boucles dessus:</p>
 <pre><code>// Utiliser une boucle for..of pour modifier plusieurs éléments
-// Je mets tout sur une ligne, c&#39;est mal mais c&#39;est toléré dans la console
+// Je mets tout sur une ligne sans accolades, c&#39;est mal mais c&#39;est toléré dans la console
 for(paragraph of coloredIn1stSection) paragraph.innerHTML = &#39;Je viens de modifier le &lt;strong&gt;contenu&lt;/strong&gt; du paragraphe.&#39;</code></pre>
 <p>Ensuite tu peux faire la même chose avec une boucle for:</p>
 <pre><code>// Utiliser une boucle for..of pour modifier plusieurs éléments
-// Je mets tout sur une ligne, c&#39;est mal mais c&#39;est toléré dans la console
 for(let i=0;i&lt;allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragraphe à l&#39;index ${i} écrasé !`</code></pre>
 <p>Si tu veux modifier juste <em>un</em> élément d'une collection, tu peux donc le faire via son indice dans le tableau:</p>
 <pre><code>allParagraphs[1].innerHTML = &#39;&lt;em&gt;Du texte en italique pour remplacer le 2ème paragraphe&lt;/em&gt;&#39;</code></pre>
 <h3 id="exercice-2-modifier-un-ou-plusieurs-éléments">Exercice 2: modifier un ou plusieurs éléments</h3>
 <p>Retourne dans <code>exemples/elements/index.html</code>, ajoute du code à la fin du fichier pour:</p>
 <ul>
-<li>Changer le contenu du titre <code>h2</code> de la div <code>#main</code> que tu as récupéré dans la section précédente</li>
-<li>Changer le contenu des paragraphes stockés dans la <code>const coloredInSecondary</code>.</li>
-<li>Changer le contenu du 2ème paragraphe de la div <code>#secondary</code></li>
+<li>Remplacer le contenu du titre <code>h2</code> de la div <code>#main</code> récupéré à l'exercice précédent, par <code>J'ai changé le sous-titre!</code></li>
+<li>Remplacer le contenu des <code>code</code>s stockés dans la <code>const codesInSecondary</code> par <code>#i-was-secondary</code>.</li>
+<li>Remplacer le contenu du paragraphe stocké dans la <code>const coloredInSecondary</code>, par <code>J'ai encore tout cassé!</code></li>
+<li>Ajouter <code>avec contenu modifié</code> (<strong>avec l'espace avant avec</strong>) après le contenu du 3ème paragraphe de la 2ème div <code>.doc-section</code></li>
 </ul>
 <h2 id="dune-application-html-statique-à-une-spa-js">D'une application HTML statique à une &quot;SPA&quot; JS</h2>
 <p>Bon, tu l'auras compris, SPA ici n'a aucun rapport avec nos amies les bêtes.</p>
@@ -146,6 +149,7 @@ for(let i=0;i&lt;allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragra
 <blockquote>
 <p>Une Single-Page App fonctionne sur un mode radicalement différent ! Au lieu de recharger un nouveau document HTML à chaque clic sur un lien, <strong>tout</strong> se passe sur la même page HTML, d'où le nom : on a un fichier <code>index.html</code> minimal, à partir duquel on charge une application JS, qui se charge de créer <strong>dynamiquement</strong> tout le HTML de la page.</p>
 </blockquote>
-<p><strong>À suivre...</strong></p>
+<h3 id="exemple-exercice-1">Exemple / Exercice 1</h3>
+<p>Dans le répertoire <code>exemples/html-vers-js/</code></p>
 </body>
 </html>

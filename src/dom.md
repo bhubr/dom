@@ -78,12 +78,13 @@ Sinon, une fois qu'on a un élément comme `divMain` ci-dessus, on peut appeler 
 
 ### Exercice 1: récupérer des éléments
 
-En t'inspirant des exemples de code dans `exemples/elements/index.html`, ajoute du code à la fin du fichier pour:
+**Il faut travailler dans `exemples/elements/index.html`, en ajoutant du code à la fin.** Les variables sont définies mais tu dois les affecter
 
-* Récupérer dans une variable le titre `h2` de la div `#main`
+* Récupérer dans une variable le *premier* titre `h2` de la div `#main` (indice: trouver *tous* les `h2` de `#main` puis prendre celui à l'index 0 dans ce qui t'a été retourné)
 * Récupérer dans une variable les éléments `code` dans tout le document
 * Récupérer dans une variable les éléments `code` dans la div `#secondary`
 * Récupérer dans une variable les éléments `code` dans la 2ème div `.doc-section`
+* Récupérer dans une variable le 3ème paragraphe de la 2ème div `.doc-section`
 
 ## Modifier un ou plusieurs éléments
 
@@ -95,13 +96,12 @@ Toujours avec `exemples/elements/index.html` : **dans la console**, essaie de mo
 Maintenant, les variables où on a stocké les retours de `getElementsByClassName()` ou `getElementsByTagName()` ne contiennent pas *un* élément mais une *collection* d'éléments... À peu de choses près, cela ressemble à un tableau, et donc, on peut faire des boucles dessus:
 
     // Utiliser une boucle for..of pour modifier plusieurs éléments
-    // Je mets tout sur une ligne, c'est mal mais c'est toléré dans la console
+    // Je mets tout sur une ligne sans accolades, c'est mal mais c'est toléré dans la console
     for(paragraph of coloredIn1stSection) paragraph.innerHTML = 'Je viens de modifier le <strong>contenu</strong> du paragraphe.'
 
 Ensuite tu peux faire la même chose avec une boucle for:
 
     // Utiliser une boucle for..of pour modifier plusieurs éléments
-    // Je mets tout sur une ligne, c'est mal mais c'est toléré dans la console
     for(let i=0;i<allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragraphe à l'index ${i} écrasé !`
 
 Si tu veux modifier juste *un* élément d'une collection, tu peux donc le faire via son indice dans le tableau:
@@ -112,9 +112,10 @@ Si tu veux modifier juste *un* élément d'une collection, tu peux donc le faire
 
 Retourne dans `exemples/elements/index.html`, ajoute du code à la fin du fichier pour:
 
-* Changer le contenu du titre `h2` de la div `#main` que tu as récupéré dans la section précédente
-* Changer le contenu des paragraphes stockés dans la `const coloredInSecondary`.
-* Changer le contenu du 2ème paragraphe de la div `#secondary`
+* Remplacer le contenu du titre `h2` de la div `#main` récupéré à l'exercice précédent, par `J'ai changé le sous-titre!`
+* Remplacer le contenu des `code`s stockés dans la `const codesInSecondary` par `#i-was-secondary`.
+* Remplacer le contenu du paragraphe stocké dans la `const coloredInSecondary`, par `J'ai encore tout cassé!`
+* Ajouter ` avec contenu modifié` (**avec l'espace avant avec**) après le contenu du 3ème paragraphe de la 2ème div `.doc-section`
 
 ## D'une application HTML statique à une "SPA" JS
 
@@ -128,4 +129,6 @@ Quand le navigateur charge une nouvelle page, ou recharge la page courante, tout
 
 > Une Single-Page App fonctionne sur un mode radicalement différent ! Au lieu de recharger un nouveau document HTML à chaque clic sur un lien, **tout** se passe sur la même page HTML, d'où le nom : on a un fichier `index.html` minimal, à partir duquel on charge une application JS, qui se charge de créer **dynamiquement** tout le HTML de la page.
 
-**À suivre...**
+### Exemple / Exercice 1
+
+Dans le répertoire `exemples/html-vers-js/`

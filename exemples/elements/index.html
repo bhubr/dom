@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Exemple API / HTML</title>
+    <link rel="stylesheet" href="../../css/mocha-5.0.5.min.css">
     <style>
     body {
-      max-width: 700px;
-      margin: 0 auto;
+      max-width: 54%;
+      margin-left: 2%;
       font-family: 'Helvetica';
     }
     .doc-section {
@@ -23,6 +24,30 @@
     .paragraphe-couleur {
       background: #def;
     }
+    .btn {
+      padding: 10px 30px;
+      font-size: large;
+      background: #678;
+      border: 1px solid #678;
+      border-radius: 4px;
+      color: #fff;
+    }
+    #test {
+      position: fixed;
+      right: 2%;
+      bottom: 2%;
+    }
+    #mocha-wrap {
+      position: fixed;
+      left: 57%;
+      width: 40%;
+      top: 50px;
+    }
+    #mocha {
+      margin: 0;
+      max-height: 650px;
+      overflow-y: scroll;
+    }
     </style>
   </head>
   <body>
@@ -34,18 +59,18 @@
       <h2>Sous-titre dans div #main</h2>
 
       <div class="doc-section">
-        <h2>Titre de la 1ère div <code>.une-class</code></h2>
-        <p class="paragraphe-couleur">1er paragraphe dans la 1ère div <code>.une-class</code></p>
-        <p>2ème paragraphe dans la 1ère div <code>.une-class</code></p>
-        <p class="paragraphe-couleur">3ème paragraphe dans la 1ère div <code>.une-class</code></p>
-        <p>4ème paragraphe dans la 1ère div <code>.une-class</code></p>
+        <h2>Titre de la 1ère div <code>.doc-section</code></h2>
+        <p class="paragraphe-couleur">1er paragraphe dans la 1ère div <code>.doc-section</code></p>
+        <p>2ème paragraphe dans la 1ère div <code>.doc-section</code></p>
+        <p class="paragraphe-couleur">3ème paragraphe dans la 1ère div <code>.doc-section</code></p>
+        <p>4ème paragraphe dans la 1ère div <code>.doc-section</code></p>
       </div>
 
       <div class="doc-section">
-        <h2>Titre de la 2ème div <code>.une-class</code></h2>
-        <p>1er paragraphe dans la 2ème div <code>.une-class</code></p>
-        <p class="paragraphe-couleur">2ème paragraphe dans la 2ème div <code>.une-class</code></p>
-        <p>3ème paragraphe dans la 2ème div <code>.une-class</code></p>
+        <h2>Titre de la 2ème div <code>.doc-section</code></h2>
+        <p>1er paragraphe dans la 2ème div <code>.doc-section</code></p>
+        <p class="paragraphe-couleur">2ème paragraphe dans la 2ème div <code>.doc-section</code></p>
+        <p>3ème paragraphe dans la 2ème div <code>.doc-section</code></p>
       </div>
 
     </div>
@@ -53,8 +78,10 @@
     <div id="secondary">
       <h2>div <code>#secondary</code> sans classe</h2>
       <p>1er paragraphe dans la div <code>#secondary</code></p>
-      <p class="paragraphe-couleur">2ème paragraphe dans la div <code>#secondary</code></p>
+      <p class="paragraphe-couleur">2ème paragraphe dans la div, coloré cette fois</p>
     </div>
+
+    <div id="mocha-wrap"></div>
 
     <!-- LE SCRIPT QUI CONTIENT NOTRE APPLI JS -->
     <script>
@@ -99,8 +126,8 @@
       console.log('')
 
 
-      // ----- Utilisation de getElementByTagName() -----
-      console.log('#### Utilisation de getElementByTagName()')
+      // ----- Utilisation de getElementsByTagName() -----
+      console.log('#### Utilisation de getElementsByTagName()')
 
       // Récupérer toutes les divs du document
       const allDivs = document.getElementsByTagName('div')
@@ -124,17 +151,39 @@
       //  ----- Exercice 1: trouver des éléments -----
 
       // Récupérer le titre `h2` de la div `#main`
+      let mainTitleH2
+
       // Récupérer les éléments `code` dans tout le document
+      let allCodes
+
       // Récupérer les éléments `code` dans la div `#secondary`
+      let codesInSecondary
+
       // Récupérer les éléments `code` dans la 2ème div `.doc-section`
+      let codesIn2ndSec
+
+      // Récupérer dans une variable le 3ème paragraphe de la 2ème div `.doc-section`
+      let parag3in2ndDocSec
 
       // ----- Exercice 2: modifier un ou des éléments -----
 
-      // Changer le contenu du titre `h2` de la div `#main` que tu as récupéré dans la section précédente
-      // Changer le contenu des paragraphes stockés dans la `const coloredInSecondary`.
-      // Changer le contenu du 2ème paragraphe de la div `#secondary`
+      // Mettre "J'ai changé le sous-titre!" dans le 1er h2 de la div #main
+
+      // Remplacer le contenu des `code`s stockés dans la const codesInSecondary par #i-was-secondary
+
+      // Mettre "J'ai encore tout cassé!" dans le (1er) paragraphe stocké dans la const coloredInSecondary
+
+
+      // Ajouter ` avec contenu modifié` (avec l'espace avant avec) après le contenu du 3ème paragraphe
+      // de la 2ème div `.doc-section`
+
 
     </script>
+
+    <script src="../../js/mocha-5.0.5.min.js"></script>
+    <script src="../../js/assert.js"></script>
+    <!-- <script src="../../js/chai.min.js"></script> -->
+    <script src="test.js"></script>
 
   </body>
 </html>
