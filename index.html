@@ -229,6 +229,9 @@ for(let i=0;i&lt;allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragra
 <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">const</span> mainDiv <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&#39;main&#39;</span>)
 <span class="va">mainDiv</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;&lt;h1&gt;Test insertion HTML&lt;/h1&gt;&#39;</span></code></pre></div>
 <p>La div dont l'id est <code>main</code> est la div où notre app JS va injecter tout le contenu HTML.</p>
+<h4 id="découpage-du-html-de-lindex-en-3-parties">Découpage du HTML de l'index en 3 parties</h4>
+<p>On va distinguer les 3 sections contenues dans la div <code>#main</code> : si on compare les 4 fichiers HTML, la partie centrale (<em>content</em>) est ce qui change, tandis que la <code>navbar</code> et le <code>footer</code> restent les mêmes.</p>
+<p>Il est donc intéressant de stocker la navbar et le footer dans des constantes qu'on réutilisera quelle que soit la page qu'on veut afficher.</p>
 <p>On va <strong>couper</strong>-coller chacune des 3 sections de la div <code>#main</code>, dans des chaînes JS, <strong>obligatoirement</strong> délimitées par des backticks pour pouvoir gérer les sauts de ligne.</p>
 <p>Ajoute au code ceci :</p>
 <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">const</span> navbarHtml <span class="op">=</span> <span class="vs">`&lt;nav&gt;</span>
@@ -239,5 +242,8 @@ for(let i=0;i&lt;allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragra
 <span class="vs">  &lt;/nav&gt;</span>
 <span class="vs">`</span></code></pre></div>
 <p>Puis procède de la même façon en coupant-collant la partie <code>footer</code> (vers une constante nommée <code>footerHtml</code>), et la même chose pour la partie centrale qui reste (vers une constante nommée <code>homeHtml</code>).</p>
+<p>Ensuite, tu peux déplacer la partie qui modifie <code>mainDiv.innerHTML</code> tout à la fin, et écrire:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">mainDiv</span>.<span class="at">innerHTML</span> <span class="op">=</span> navbarHtml <span class="op">+</span> homeHtml <span class="op">+</span> footerHtml</code></pre></div>
+<p>Maintenant, de la même façon, prends les parties de contenu spécifiques des autres fichiers <code>about.html</code>, <code>movie-matrix.html</code>, <code>movie-inception.html</code>, et colle les vers des constantes <code>aboutHtml</code>, <code>matrixHtml</code>, <code>inceptionHtml</code></p>
 </body>
 </html>
