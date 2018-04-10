@@ -101,11 +101,13 @@ Maintenant, les variables où on a stocké les retours de `getElementsByClassNam
 
     // Utiliser une boucle for..of pour modifier plusieurs éléments
     // Je mets tout sur une ligne sans accolades, c'est mal mais c'est toléré dans la console
+    const coloredIn1stSection = docSections[0].getElementsByClassName('paragraphe-couleur')
     for(paragraph of coloredIn1stSection) paragraph.innerHTML = 'Je viens de modifier le <strong>contenu</strong> du paragraphe.'
 
 Ensuite tu peux faire la même chose avec une boucle for:
 
-    // Utiliser une boucle for..of pour modifier plusieurs éléments
+    // Utiliser une boucle for pour modifier plusieurs éléments
+    const allParagraphs = document.getElementsByTagName('p')
     for(let i=0;i<allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragraphe à l'index ${i} écrasé !`
 
 Si tu veux modifier juste *un* élément d'une collection, tu peux donc le faire via son indice dans le tableau:
@@ -133,6 +135,118 @@ Quand le navigateur charge une nouvelle page, ou recharge la page courante, tout
 
 > Une Single-Page App fonctionne sur un mode radicalement différent ! Au lieu de recharger un nouveau document HTML à chaque clic sur un lien, **tout** se passe sur la même page HTML, d'où le nom : on a un fichier `index.html` minimal, à partir duquel on charge une application JS, qui se charge de créer **dynamiquement** tout le HTML de la page.
 
-### Exemple / Exercice 1
+### Exemple
 
-Dans le répertoire `exemples/html-vers-js/`
+<img style="float:right; width: 30%; padding-left: 20px;" alt="Trust Me" src="wiki-images/trust-me.jpg" />
+
+Dans le répertoire `exemples/html-statique-vers-js/`, ouvre `index.html`.
+
+C'est la base d'une application d'exemple, semblable à ce qu'on a vu en dojo. Celle qu'on a vu en dojo comportait deux pages: index et about. Celle-ci en comporte deux autres, pas pour ajouter une complexité inutile, mais parce qu'on aura besoin!
+
+Voici le code source de l'index :
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Movie Site / Home</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div id="main">
+
+        <!-- Navigation -->
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </nav>
+
+        <!-- Content -->
+        <h1>Home</h1>
+        <div class="movies">
+          <div class="movie-thumb">
+            <a href="movie-matrix.html"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/hEpWvX6Bp79eLxY1kX5ZZJcme5U.jpg" alt="The Matrix" /></a>
+            <p>Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.</p>
+          </div>
+          <div class="movie-thumb">
+            <a href="movie-inception.html"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg" alt="Inception" /></a>
+            <p>Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible.</p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+          <div class="inner">&copy; 2018 Wild Movies Toulouse</div>
+        </footer>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
+```
+
+Cette page comporte :
+
+* Dans le `head`, un lien vers une feuille de style
+* Dans le `body`, une div `.container` contenant une autre div `#main`, celle-ci contenant 3 parties, délimitées avec des commentaires `<!-- -->` :
+
+    * Navigation
+    * Contenu principal
+    * Footer
+
+Les 3 pages HTML du même répertoire (`about.html`, `movie-matrix.html`, `movie-matrix.html`) suivent la même structure.
+
+### Création de l'application JS
+
+Ici tu peux créer une branche: `git checkout -b prenom-nom`.
+
+Crée un fichier `app.js` et référence-le depuis l'index via une balise `<script>`.
+
+#### Test d'insertion de HTML
+
+Ensuite tu peux lui ajouter:
+
+```javascript
+const mainDiv = document.getElementById('main')
+mainDiv.innerHTML = '<h1>Test insertion HTML</h1>'
+```
+
+La div dont l'id est `main` est la div où notre app JS va injecter tout le contenu HTML.
+
+#### Découpage du HTML de l'index en 3 parties
+
+On va distinguer les 3 sections contenues dans la div `#main` : si on compare les 4 fichiers HTML, la partie centrale (*content*) est ce qui change, tandis que la `navbar` et le `footer` restent les mêmes.
+
+Il est donc intéressant de stocker la navbar et le footer dans des constantes qu'on réutilisera quelle que soit la page qu'on veut afficher.
+
+On va **couper**-coller chacune des 3 sections de la div `#main`, dans des chaînes JS, **obligatoirement** délimitées par des backticks pour pouvoir gérer les sauts de ligne.
+
+Ajoute au code ceci :
+
+```javascript
+const navbarHtml = `<nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+`
+```
+
+Puis procède de la même façon en coupant-collant la partie `footer` (vers une constante nommée `footerHtml`), et la même chose pour la partie centrale qui reste (vers une constante nommée `homeHtml`).
+
+Ensuite, tu peux déplacer la partie qui modifie `mainDiv.innerHTML` tout à la fin, et écrire:
+
+```javascript
+mainDiv.innerHTML = navbarHtml + homeHtml + footerHtml
+```
+
+Maintenant, de la même façon, prends les parties de contenu spécifiques des autres fichiers `about.html`, `movie-matrix.html`, `movie-inception.html`, et colle les vers des constantes `aboutHtml`, `matrixHtml`, `inceptionHtml`
