@@ -1,4 +1,4 @@
-const allCodesLen = allCodes ? allCodes.length : 0
+const allCodesLen = typeof allCodes !== 'undefined' ? allCodes.length : 0
 
 const mochaRun = () => {
   mocha.checkLeaks()
