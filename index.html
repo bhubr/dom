@@ -244,6 +244,48 @@ for(let i=0;i&lt;allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragra
 <p>Puis procède de la même façon en coupant-collant la partie <code>footer</code> (vers une constante nommée <code>footerHtml</code>), et la même chose pour la partie centrale qui reste (vers une constante nommée <code>homeHtml</code>).</p>
 <p>Ensuite, tu peux déplacer la partie qui modifie <code>mainDiv.innerHTML</code> tout à la fin, et écrire:</p>
 <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">mainDiv</span>.<span class="at">innerHTML</span> <span class="op">=</span> navbarHtml <span class="op">+</span> homeHtml <span class="op">+</span> footerHtml</code></pre></div>
-<p>Maintenant, de la même façon, prends les parties de contenu spécifiques des autres fichiers <code>about.html</code>, <code>movie-matrix.html</code>, <code>movie-inception.html</code>, et colle les vers des constantes <code>aboutHtml</code>, <code>matrixHtml</code>, <code>inceptionHtml</code></p>
+<p>Maintenant, de la même façon, prends les <strong>parties de contenu</strong> spécifiques des autres fichiers : <code>about.html</code>, <code>movie-matrix.html</code>, <code>movie-inception.html</code>, et colle les vers des constantes <code>aboutHtml</code>, <code>matrixHtml</code>, <code>inceptionHtml</code>.</p>
+<p>À ce stade sers-toi du bouton Test en bas à droite pour vérifier que tu as bien suivi les instructions.</p>
+<blockquote>
+<p>Tu peux maintenant couper la partie de contenu d'<code>index.html</code> : il ne doit plus y avoir de contenu dans la div <code>#main</code> (par contre la div elle-même doit toujours être là). Comme tu as copié le contenu des pages <code>about.html</code>, <code>movie-matrix.html</code>, <code>movie-inception.html</code> vers <code>app.js</code>, tu peux supprimer ces 3 fichiers HTML.</p>
+</blockquote>
+<h4 id="gestion-des-évènements">Gestion des évènements</h4>
+<p>À ce stade, si tu cliques sur un des liens, ça ne marche plus !</p>
+<p>Normal : le fait de cliquer sur un lien provoque une requête vers le serveur, pour obtenir la ressource / page référencée dans l'attribut <code>href</code> du lien.</p>
+<p>Il y a deux évènements habituels qui provoquent un &quot;aller-retour&quot; vers le serveur :</p>
+<ul>
+<li>Le clic sur un lien, comme on vient de le dire.</li>
+<li>La soumission d'un formulaire</li>
+</ul>
+<p>Pour éviter de <em>sortir</em> de la page en cours - ce qui nous ferait perdre toutes les données de l'app JS - on doit gérer nous-mêmes ce qui se passe sur un clic de lien ou une soumission de formulaire.</p>
+<p>Voyons déjà comment gérer les évènements. On pourrait le faire en mettant un attribut <code>onclick</code> sur les liens : cela permet d'appeler du code JS. Mais ce n'est pas considéré comme une bonne pratique.</p>
+<p>En pur JS, on écrit ceci pour ajouter un &quot;listener&quot;, quelque chose qui <em>écoute</em> un évènement :</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">element</span>.<span class="at">addEventListener</span>(nomEvenement<span class="op">,</span> fonctionDeRappel)</code></pre></div>
+<p>Dans l'exemple ci-dessus :</p>
+<ul>
+<li><code>element</code> peut être n'importe quoi qui ait été récupéré via une des méthodes <code>document.getElementById()</code>, <code>document.getElementByClassName()</code>, ou <code>document.getElementByTagName()</code></li>
+<li><code>nomEvenement</code> correspond à différents possibles : <code>click</code> (click sur un élément), <code>submit</code> (soumission d'un formulaire), <code>focus</code> (activation d'un champ de formulaire en cliquant dessus), etc.</li>
+<li><code>fonctionDeRappel</code> est une fonction qui va être appelée quand l'évènement se produit. Elle peut prendre un objet &quot;évènement&quot; en paramètre.</li>
+</ul>
+<p>Un vrai exemple maintenant :</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">const</span> allLinks <span class="op">=</span>  <span class="va">document</span>.<span class="at">getElementsByTagName</span>(<span class="st">&#39;a&#39;</span>)
+<span class="va">console</span>.<span class="at">dir</span>(allLinks)
+<span class="cf">for</span>(<span class="kw">let</span> link of allLinks) <span class="op">{</span>
+  <span class="va">link</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> event <span class="op">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;yo&#39;</span>))
+<span class="op">}</span></code></pre></div>
+<p>Ici, on a récupéré <em>plusieurs</em> liens dans <code>allLinks</code>. On peut donc utiliser une boucle <code>for..of</code> pour parcourir tous les liens. Sur <em>chaque</em> lien, on met un <em>gestionnaire</em> d'évènement : la fonction de rappel passée en deuxième paramètre, qui sera appelée seulement en cas de clic sur les liens.</p>
+<p>Colle cet exemple à la fin de ton <code>app.js</code>, et recharge la page. La console doit t'afficher 4 liens, puis une &quot;popup&quot; doit s'afficher : la &quot;fonction de rappel&quot; (<em>callback</em> est le terme habituel) est bien appelée.</p>
+<p>Mais après avoir cliqué sur &quot;OK&quot;, le navigateur essaie tout de même de poursuivre l'action normale : en l'occurence, faire une requête pour obtenir la page référencée par le lien.</p>
+<p>C'est là qu'on va <em>empêcher</em> (<em>prevent</em> en anglais) le comportement par défaut (<em>default</em>) de se produire. Pour cela, on va se servir de l'objet évènement passé à la fonction de rappel : on va appeler une méthode de cet objet. Remplace les quelques lignes ci-dessus par celles ci-dessous:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">const</span> allLinks <span class="op">=</span>  <span class="va">document</span>.<span class="at">getElementsByTagName</span>(<span class="st">&#39;a&#39;</span>)
+<span class="va">console</span>.<span class="at">dir</span>(allLinks)
+<span class="cf">for</span>(<span class="kw">let</span> link of allLinks) <span class="op">{</span>
+  <span class="va">link</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> event <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="co">// Empêche le comportement par défaut du lien</span>
+    <span class="va">event</span>.<span class="at">preventDefault</span>()
+    <span class="va">console</span>.<span class="at">log</span>(<span class="va">event</span>.<span class="at">target</span><span class="op">,</span> event)
+  <span class="op">}</span>)
+<span class="op">}</span></code></pre></div>
+<p>Tu peux constater que les liens ne fonctionnent plus !</p>
 </body>
 </html>

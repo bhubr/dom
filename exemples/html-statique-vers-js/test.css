@@ -1,0 +1,29 @@
+body.testing {
+  max-width: 54%;
+  margin-left: 2%;
+  transition: all 0.5s;
+}
+#mocha-wrap {
+  position: fixed;
+  left: 57%;
+  width: 40%;
+  top: 50px;
+}
+#mocha {
+  margin: 0;
+  max-height: 650px;
+  overflow-y: scroll;
+}
+.btn {
+  padding: 10px 30px;
+  font-size: large;
+  background: #678;
+  border: 1px solid #678;
+  border-radius: 4px;
+  color: #fff;
+}
+#test {
+  position: fixed;
+  right: 2%;
+  bottom: 1%;
+}
