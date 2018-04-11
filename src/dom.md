@@ -251,3 +251,45 @@ mainDiv.innerHTML = navbarHtml + homeHtml + footerHtml
 
 Maintenant, de la même façon, prends les **parties de contenu** spécifiques des autres fichiers : `about.html`, `movie-matrix.html`, `movie-inception.html`, et colle les vers des constantes `aboutHtml`, `matrixHtml`, `inceptionHtml`.
 
+À ce stade sers-toi du bouton Test en bas à droite pour vérifier que tu as bien suivi les instructions.
+
+> Tu peux maintenant couper la partie de contenu d'`index.html` : il ne doit plus y avoir de contenu dans la div `#main` (par contre la div elle-même doit toujours être là). Comme tu as copié le contenu des pages `about.html`, `movie-matrix.html`, `movie-inception.html` vers `app.js`, tu peux supprimer ces 3 fichiers HTML.
+
+#### Gestion des évènements
+
+À ce stade, si tu cliques sur un des liens, ça ne marche plus !
+
+Normal : le fait de cliquer sur un lien provoque une requête vers le serveur, pour obtenir la ressource / page référencée dans l'attribut `href` du lien.
+
+Il y a deux évènements habituels qui provoquent un "aller-retour" vers le serveur :
+
+* Le clic sur un lien, comme on vient de le dire.
+* La soumission d'un formulaire
+
+Pour éviter de *sortir* de la page en cours - ce qui nous ferait perdre toutes les données de l'app JS - on doit gérer nous-mêmes ce qui se passe sur un clic de lien ou une soumission de formulaire.
+
+Voyons déjà comment gérer les évènements. On pourrait le faire en mettant un attribut `onclick` sur les liens : cela permet d'appeler du code JS. Mais ce n'est pas considéré comme une bonne pratique.
+
+En pur JS, on écrit ceci pour ajouter un "listener", quelque chose qui *écoute* un évènement :
+
+```javascript
+element.addEventListener(nomEvenement, fonctionDeRappel)
+```
+
+Dans l'exemple ci-dessus :
+
+* `element` peut être n'importe quoi qui ait été récupéré via une des méthodes `document.getElementById()`,  `document.getElementByClassName()`, ou `document.getElementByTagName()`
+* `nomEvenement` correspond à différents possibles : `click` (click sur un élément), `submit` (soumission d'un formulaire), `focus` (activation d'un champ de formulaire en cliquant dessus), etc.
+* `fonctionDeRappel` est une fonction qui va être appelée quand l'évènement se produit. Elle peut prendre un objet "évènement" en paramètre.
+
+Un vrai exemple maintenant :
+
+```javascript
+const allLinks =  document.getElementsByTagName('a')
+console.dir(allLinks)
+for(let link of allLinks) {
+  link.addEventListener('click', event => alert('yo'))
+}
+```
+
+Colle cet exemple à la fin de ton `app.js`, et recharge la page. La console doit t'afficher 4 liens.
