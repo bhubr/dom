@@ -1,6 +1,9 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 app.use(express.static(__dirname))
+app.use(bodyParser.json())
+
 
 const html = `
 <!doctype html>
@@ -28,5 +31,29 @@ app.get('*', (req, res) => {
   res.end()
 })
 
+const users = [
+  { email: 'benoit.hubert@wildcodeschool.fr', password: 'abc123' },
+  { email: 'joewild@wcs.fr', password: 'jecode' }
+]
+
+app.post('/my-login-url', (req, res) => {
+
+  const user = users.find(
+    user => user.email === req.body.email &&
+            user.password === req.body.password
+  )
+  if(user !== undefined) {
+    res.json({
+      success: true
+    })
+  }
+  else {
+    res.status(401).json({
+      error: 'Utilisateur non reconnu'
+    })
+  }
+
+})
+
 console.log('Server listening on http://127.0.0.1:4000')
-app.listen(80)
+app.listen(4000)
