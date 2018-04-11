@@ -1,3 +1,4 @@
+'use strict'
 const allCodesLen = typeof allCodes !== 'undefined' ? allCodes.length : 0
 
 const mochaRun = () => {
@@ -37,10 +38,41 @@ mocha.setup('bdd')
 
 describe('HTML statique vers JS - Test phase 1', () => {
 
-  it('mainTitleH2 contient le 1er h2 de #main', () => {
-    // assert.ok(typeof mainTitleH2 !== 'undefined')
-    // const expectedMainTitleH2 = divMain.getElementsByTagName('h2')[0]
-    // assert.equal(mainTitleH2, expectedMainTitleH2)
+  it('Le script app.js est référencé', () => {
+    let hasScript = false
+    const scripts = document.getElementsByTagName('script')
+    console.log(scripts)
+    for(let script of scripts) {
+      if(script.src.includes('app.js')) {
+        hasScript = true
+        break
+      }
+    }
+    assert.ok(hasScript, "Le script app.js n'est pas inclus depuis la page")
+  })
+
+  it('La const navbarHtml existe', () => {
+    assert.ok(typeof navbarHtml !== 'undefined', "navbarHtml non trouvée")
+  })
+
+  it('La const footerHtml existe', () => {
+    assert.ok(typeof footerHtml !== 'undefined', "footerHtml non trouvée")
+  })
+
+  it('La const homeHtml existe', () => {
+    assert.ok(typeof homeHtml !== 'undefined', "homeHtml non trouvée")
+  })
+
+  it('La const aboutHtml existe', () => {
+    assert.ok(typeof aboutHtml !== 'undefined', "navbarHtml non trouvée")
+  })
+
+  it('La const matrixHtml existe', () => {
+    assert.ok(typeof matrixHtml !== 'undefined', "matrixHtml non trouvée")
+  })
+
+  it('La const inceptionHtml existe', () => {
+    assert.ok(typeof inceptionHtml !== 'undefined', "inceptionHtml non trouvée")
   })
 
 })

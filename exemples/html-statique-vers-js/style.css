@@ -17,7 +17,7 @@ nav li a {
 }
 .container {
   padding: 20px;
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
 }
 footer {
@@ -41,11 +41,16 @@ footer .inner {
 .movie-thumb {
   border: 1px solid #ddd;
   display: flex;
-  padding: 20px;
+  padding: 10px;
   margin-right: 10px;
 }
+.movie-thumb {
+  width: 50%;
+  overflow: hidden;
+  hyphens: auto;
+}
 .movie-thumb img {
-  max-height: 250px;
+  max-height: 180px;
   padding: 0 10px 0 0;
 }
 .movie-page img {
