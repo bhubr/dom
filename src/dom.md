@@ -249,4 +249,5 @@ Ensuite, tu peux déplacer la partie qui modifie `mainDiv.innerHTML` tout à la 
 mainDiv.innerHTML = navbarHtml + homeHtml + footerHtml
 ```
 
-Maintenant, de la même façon, prends les parties de contenu spécifiques des autres fichiers `about.html`, `movie-matrix.html`, `movie-inception.html`, et colle les vers des constantes `aboutHtml`, `matrixHtml`, `inceptionHtml`
+Maintenant, de la même façon, prends les **parties de contenu** spécifiques des autres fichiers : `about.html`, `movie-matrix.html`, `movie-inception.html`, et colle les vers des constantes `aboutHtml`, `matrixHtml`, `inceptionHtml`.
+
