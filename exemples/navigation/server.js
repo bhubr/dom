@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+app.use(express.static(__dirname))
 
 const html = `
 <!doctype html>
@@ -18,7 +19,7 @@ const html = `
   </body>
 </html>`
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
   console.log('wildcard route')
   res.send(html)
   res.end()
