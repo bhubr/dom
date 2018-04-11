@@ -292,4 +292,24 @@ for(let link of allLinks) {
 }
 ```
 
-Colle cet exemple à la fin de ton `app.js`, et recharge la page. La console doit t'afficher 4 liens.
+Ici, on a récupéré *plusieurs* liens dans `allLinks`. On peut donc utiliser une boucle `for..of` pour parcourir tous les liens. Sur *chaque* lien, on met un *gestionnaire* d'évènement : la fonction de rappel passée en deuxième paramètre, qui sera appelée seulement en cas de clic sur les liens.
+
+Colle cet exemple à la fin de ton `app.js`, et recharge la page. La console doit t'afficher 4 liens, puis une "popup" doit s'afficher : la "fonction de rappel" (*callback* est le terme habituel) est bien appelée.
+
+Mais après avoir cliqué sur "OK", le navigateur essaie tout de même de poursuivre l'action normale : en l'occurence, faire une requête pour obtenir la page référencée par le lien.
+
+C'est là qu'on va *empêcher* (*prevent* en anglais) le comportement par défaut (*default*) de se produire. Pour cela, on va se servir de l'objet évènement passé à la fonction de rappel : on va appeler une méthode de cet objet. Remplace les quelques lignes ci-dessus par celles ci-dessous:
+
+```javascript
+const allLinks =  document.getElementsByTagName('a')
+console.dir(allLinks)
+for(let link of allLinks) {
+  link.addEventListener('click', event => {
+    // Empêche le comportement par défaut du lien
+    event.preventDefault()
+    console.log(event.target, event)
+  })
+}
+```
+
+Tu peux constater que les liens ne fonctionnent plus !
