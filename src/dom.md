@@ -294,7 +294,7 @@ for(let link of allLinks) {
 
 Ici, on a récupéré *plusieurs* liens dans `allLinks`. On peut donc utiliser une boucle `for..of` pour parcourir tous les liens. Sur *chaque* lien, on met un *gestionnaire* d'évènement : la fonction de rappel passée en deuxième paramètre, qui sera appelée seulement en cas de clic sur les liens.
 
-Colle cet exemple à la fin de ton `app.js`, et recharge la page. La console doit t'afficher 4 liens, puis une "popup" doit s'afficher : la "fonction de rappel" (*callback* est le terme habituel) est bien appelée.
+Colle cet exemple **à la fin** de ton `app.js`, et recharge la page. La console doit t'afficher 4 liens, puis une "popup" doit s'afficher : la "fonction de rappel" (*callback* est le terme habituel) est bien appelée.
 
 Mais après avoir cliqué sur "OK", le navigateur essaie tout de même de poursuivre l'action normale : en l'occurence, faire une requête pour obtenir la page référencée par le lien.
 
@@ -302,14 +302,45 @@ C'est là qu'on va *empêcher* (*prevent* en anglais) le comportement par défau
 
 ```javascript
 const allLinks =  document.getElementsByTagName('a')
-console.dir(allLinks)
 for(let link of allLinks) {
   link.addEventListener('click', event => {
     // Empêche le comportement par défaut du lien
     event.preventDefault()
-    console.log(event.target, event)
+    console.log(event.target)
+    const newUrl = event.target.href
+    console.log(newUrl)
   })
 }
 ```
 
 Tu peux constater que les liens ne fonctionnent plus !
+
+On a mis un `console.log()` pour examiner une des propriétés de l'évènement très utile : `target`, qui permet de savoir sur quel élément s'est produit l'évènement. À partir de là, si on a un élément `a`, on peut examiner sa propriété `href`, pour savoir quelle est la page qu'on aurait demandé si le clic sur le lien n'avait pas été "intercepté".
+
+Ci-dessus, on a stocké la valeur du `href` dans `newUrl`. Maintenant, on va se servir de cette chaîne de caractères pour déterminer quel est le  contenu HTML à afficher, à la place de celui existant.
+
+Modifie encore le code, lis les commentaires dedans, et essaie-le !!
+
+```javascript
+const allLinks =  document.getElementsByTagName('a')
+for(let link of allLinks) {
+  link.addEventListener('click', event => {
+    // Empêche le comportement par défaut du lien
+    event.preventDefault()
+    const newUrl = event.target.href
+    // On découpe l'URL car on veut obtenir le "morceau"
+    // se trouvant après le dernier /
+    // split() sur une chaîne nous renvoie un tableau
+    const splitUrl = newUrl.split('/')
+    const page = splitUrl.pop()
+    console.log(page)
+
+    if(page === 'index.html') {
+      mainDiv.innerHTML = navbarHtml + homeHtml + footerHtml
+    }
+    else if(page === 'about.html') {
+      mainDiv.innerHTML = navbarHtml + aboutHtml + footerHtml
+    }
+  })
+}
+```

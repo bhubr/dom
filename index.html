@@ -274,18 +274,43 @@ for(let i=0;i&lt;allParagraphs.length;i++) allParagraphs[i].innerHTML = `Paragra
   <span class="va">link</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> event <span class="op">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;yo&#39;</span>))
 <span class="op">}</span></code></pre></div>
 <p>Ici, on a récupéré <em>plusieurs</em> liens dans <code>allLinks</code>. On peut donc utiliser une boucle <code>for..of</code> pour parcourir tous les liens. Sur <em>chaque</em> lien, on met un <em>gestionnaire</em> d'évènement : la fonction de rappel passée en deuxième paramètre, qui sera appelée seulement en cas de clic sur les liens.</p>
-<p>Colle cet exemple à la fin de ton <code>app.js</code>, et recharge la page. La console doit t'afficher 4 liens, puis une &quot;popup&quot; doit s'afficher : la &quot;fonction de rappel&quot; (<em>callback</em> est le terme habituel) est bien appelée.</p>
+<p>Colle cet exemple <strong>à la fin</strong> de ton <code>app.js</code>, et recharge la page. La console doit t'afficher 4 liens, puis une &quot;popup&quot; doit s'afficher : la &quot;fonction de rappel&quot; (<em>callback</em> est le terme habituel) est bien appelée.</p>
 <p>Mais après avoir cliqué sur &quot;OK&quot;, le navigateur essaie tout de même de poursuivre l'action normale : en l'occurence, faire une requête pour obtenir la page référencée par le lien.</p>
 <p>C'est là qu'on va <em>empêcher</em> (<em>prevent</em> en anglais) le comportement par défaut (<em>default</em>) de se produire. Pour cela, on va se servir de l'objet évènement passé à la fonction de rappel : on va appeler une méthode de cet objet. Remplace les quelques lignes ci-dessus par celles ci-dessous:</p>
 <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">const</span> allLinks <span class="op">=</span>  <span class="va">document</span>.<span class="at">getElementsByTagName</span>(<span class="st">&#39;a&#39;</span>)
-<span class="va">console</span>.<span class="at">dir</span>(allLinks)
 <span class="cf">for</span>(<span class="kw">let</span> link of allLinks) <span class="op">{</span>
   <span class="va">link</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> event <span class="op">=&gt;</span> <span class="op">{</span>
     <span class="co">// Empêche le comportement par défaut du lien</span>
     <span class="va">event</span>.<span class="at">preventDefault</span>()
-    <span class="va">console</span>.<span class="at">log</span>(<span class="va">event</span>.<span class="at">target</span><span class="op">,</span> event)
+    <span class="va">console</span>.<span class="at">log</span>(<span class="va">event</span>.<span class="at">target</span>)
+    <span class="kw">const</span> newUrl <span class="op">=</span> <span class="va">event</span>.<span class="va">target</span>.<span class="at">href</span>
+    <span class="va">console</span>.<span class="at">log</span>(newUrl)
   <span class="op">}</span>)
 <span class="op">}</span></code></pre></div>
 <p>Tu peux constater que les liens ne fonctionnent plus !</p>
+<p>On a mis un <code>console.log()</code> pour examiner une des propriétés de l'évènement très utile : <code>target</code>, qui permet de savoir sur quel élément s'est produit l'évènement. À partir de là, si on a un élément <code>a</code>, on peut examiner sa propriété <code>href</code>, pour savoir quelle est la page qu'on aurait demandé si le clic sur le lien n'avait pas été &quot;intercepté&quot;.</p>
+<p>Ci-dessus, on a stocké la valeur du <code>href</code> dans <code>newUrl</code>. Maintenant, on va se servir de cette chaîne de caractères pour déterminer quel est le contenu HTML à afficher, à la place de celui existant.</p>
+<p>Modifie encore le code, lis les commentaires dedans, et essaie-le !!</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">const</span> allLinks <span class="op">=</span>  <span class="va">document</span>.<span class="at">getElementsByTagName</span>(<span class="st">&#39;a&#39;</span>)
+<span class="cf">for</span>(<span class="kw">let</span> link of allLinks) <span class="op">{</span>
+  <span class="va">link</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> event <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="co">// Empêche le comportement par défaut du lien</span>
+    <span class="va">event</span>.<span class="at">preventDefault</span>()
+    <span class="kw">const</span> newUrl <span class="op">=</span> <span class="va">event</span>.<span class="va">target</span>.<span class="at">href</span>
+    <span class="co">// On découpe l&#39;URL car on veut obtenir le &quot;morceau&quot;</span>
+    <span class="co">// se trouvant après le dernier /</span>
+    <span class="co">// split() sur une chaîne nous renvoie un tableau</span>
+    <span class="kw">const</span> splitUrl <span class="op">=</span> <span class="va">newUrl</span>.<span class="at">split</span>(<span class="st">&#39;/&#39;</span>)
+    <span class="kw">const</span> page <span class="op">=</span> <span class="va">splitUrl</span>.<span class="at">pop</span>()
+    <span class="va">console</span>.<span class="at">log</span>(page)
+
+    <span class="cf">if</span>(page <span class="op">===</span> <span class="st">&#39;index.html&#39;</span>) <span class="op">{</span>
+      <span class="va">mainDiv</span>.<span class="at">innerHTML</span> <span class="op">=</span> navbarHtml <span class="op">+</span> homeHtml <span class="op">+</span> footerHtml
+    <span class="op">}</span>
+    <span class="cf">else</span> <span class="cf">if</span>(page <span class="op">===</span> <span class="st">&#39;about.html&#39;</span>) <span class="op">{</span>
+      <span class="va">mainDiv</span>.<span class="at">innerHTML</span> <span class="op">=</span> navbarHtml <span class="op">+</span> aboutHtml <span class="op">+</span> footerHtml
+    <span class="op">}</span>
+  <span class="op">}</span>)
+<span class="op">}</span></code></pre></div>
 </body>
 </html>
