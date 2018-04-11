@@ -75,6 +75,18 @@ describe('HTML statique vers JS - Test phase 1', () => {
     assert.ok(typeof inceptionHtml !== 'undefined', "inceptionHtml non trouvée")
   })
 
+  it('La div #main doit toujours exister', () => {
+    const mainDiv = document.getElementById('main')
+    assert.notEqual(mainDiv, null, 'div #main non trouvée')
+  })
+
+  it('La div #main doit toujours contenir le contenu original', () => {
+    const mainDiv = document.getElementById('main')
+    assert.ok(mainDiv.innerHTML.includes('<a href="index.html">Home</a>'), 'navbar absente ou modifiée')
+    assert.ok(mainDiv.innerHTML.includes('<h1>Home</h1>'), 'partie de contenu absente ou modifiée')
+    assert.ok(mainDiv.innerHTML.includes('Wild Movies Toulouse'), 'footer absent ou modifié')
+  })
+
 })
 
 createNodes()
