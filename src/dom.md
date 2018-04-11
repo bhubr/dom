@@ -125,6 +125,8 @@ Retourne dans `exemples/elements/index.html`, ajoute du code à la fin du fichie
 
 ## D'une application HTML statique à une "SPA" JS
 
+> On a déjà parlé de tout ça en dojo... Pour le coup, comme on a repris le HTML de base du hackathon, votre travail du dojo est sur le [dépôt de ressources pour le hackathon](https://github.com/bhubr/hero/). Vous avez une branche par groupe, `dojo-groupe1` et `dojo-groupe2`. Je vous le donne comme référence, mais lisez d'abord et faites les exemples ci-dessous, ça reprend les mêmes principes.
+
 Bon, tu l'auras compris, SPA ici n'a aucun rapport avec nos amies les bêtes.
 
 C'est un acronyme pour "Single-Page Application". Kézako ? Pense à comment tu as travaillé sur ton 1er projet: comme il s'agissait d'un blog statique, tu avais créé plusieurs pages, dans des fichiers HTML séparés, avec des liens de l'une à l'autre, en passant les noms des fichiers dans les attributs `href` des balises `<a>`.
