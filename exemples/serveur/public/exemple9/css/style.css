@@ -1,0 +1,53 @@
+body {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    padding: 0 10px;
+}
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+.counter-wrap {
+  font-size: 22px;
+}
+#url {
+  color: #66e;
+}
+label,
+input {
+  display: block;
+}
+input {
+  width: 96%;
+  border: 1px solid #ddd;
+}
+button,
+input {
+  padding: 8px 12px;
+  margin: 4px 0 15px 0;
+  border-radius: 3px;
+  font-size: 16x;
+}
+button {
+  background: #67c;
+  border: 1px solid #67c;
+  color: #fff;
+}
+.flex {
+  display: flex;
+}
+
+.flex > form,
+.flex > div {
+  width: 46%;
+}
+.flex > form {
+  padding-right: 2%;
+}
+.flex > div {
+  padding-left: 2%;
+}

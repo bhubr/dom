@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Client-serveur #2</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <h1>Echange client-serveur #2</h1>
+    <p>Fichier html: <code>public/exemple8/index.html</code> Script: <a href="/js/script.js">script</a>.<p>
+
+    <p>
+      <strong>Dans cet exemple, on va chercher des prénoms stockés sur le
+      serveur</strong>, selon un paramètre passé dans l'URL.
+    </p>
+    <p>Chaque bouton permet d'envoyer une requête au serveur, avec une chaîne.
+      Le serveur filtre une liste de prénoms, et ne renvoie que ceux contenant cette chaîne.
+    </p>
+    <p>
+      <button>a</button>
+      <button>c</button>
+      <button>e</button>
+      <button>ma</button>
+    </p>
+    <p>Pour déclencher une requête vers le serveur, clique sur un des boutons !</p>
+
+    <h3>Résultats</h3>
+    <p>Dernière URL demandée au serveur: <span id="url">aucune</span></p>
+    <ul id="first-names"></ul>
+
+    <script src="/js/script.js"></script>
+
+  </body>
+</html>

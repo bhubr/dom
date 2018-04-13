@@ -13,7 +13,7 @@ gulp.task('docs', function() {
       from: 'markdown',
       to: 'html5',
       ext: '.html',
-      args: ['--smart']
+      args: ['-s --toc --css=css/pandoc-github.css --css=css/pandoc-styles.css']
     }))
     .pipe(gulp.dest(__dirname));
 });

@@ -1,0 +1,45 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Client-serveur #3</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <h1>Echange client-serveur #3 - formulaire envoyé par GET</h1>
+    <p>Fichier html: <code>public/exemple9/index.html</code> Script: <a href="/js/script.js">script</a>.<p>
+
+    <p>
+      <strong>Dans cet exemple, on va envoyer des données au serveur,
+      serveur</strong>, via des paramètres passés dans l'URL.
+    </p>
+    <p>
+      <strong>Ce n'est pas approprié pour l'envoi de données sensibles</strong>
+      (comme un formulaire d'inscription ou de connexion).
+    </p>
+
+    <p>Le serveur va renvoyer des personnes, filtrées selon les critères indiqués ci-dessous.</p>
+
+    <div class="flex">
+      <form id="form">
+        <h3>Recherche</h3>
+        <label for="first-name">Filtre de prénom (doit contenir ces lettres)</label>
+        <input id="first-name" name="first-name" placeholder="Saisis des lettres *** minuscules ***" />
+        <label for="max-age">Filtre d'âge (l'âge doit être inférieur ou égal à cette valeur)</label>
+        <input id="max-age" name="max-age" placeholder="Saisis un âge maximum (100 si vide)" />
+
+        <button type="submit">Rechercher personnes</button>
+      </form>
+
+      <div>
+        <h3>Résultats</h3>
+        <p>Dernière URL demandée au serveur: <span id="url">aucune</span></p>
+        <table id="persons"></table>
+      </div>
+    </div>
+
+
+    <script src="/js/script.js"></script>
+
+  </body>
+</html>
