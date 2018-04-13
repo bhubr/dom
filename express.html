@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="css/pandoc-github.css">
   <link rel="stylesheet" href="css/pandoc-styles.css">
   <!--[if lt IE 9]>
@@ -30,10 +67,31 @@
 <p>C'est précisément ce que permettent de faire Node.js et Express. On pourrait le faire avec Node.js seul, mais Express nous facilite le travail.</p>
 <p>Quand on développe son application, on travaille &quot;en local&quot; : le serveur est accessible via une URL du type <a href="http://localhost" class="uri">http://localhost</a> ou <a href="http://localhost:4000" class="uri">http://localhost:4000</a>. Il faut que le serveur soit lancé !</p>
 <h2 id="exemple-1---bases">Exemple 1 - bases</h2>
-<blockquote>
-<p>Rends toi dans le dossier <code>exemples/serveur/</code>. Avant toute chose lance la &gt; commande <code>npm install</code>.</p>
+<p>D'abord, un petit rappel sur le protocole HTTP. Il implique deux participants :</p>
 <ul>
-<li>Ouvre <code>exemple1-base.js</code>, et lance pouet</li>
+<li>Le client (par ex. le navigateur web) qui émet des <em>requêtes</em></li>
+<li>Le serveur qui, lorsqu'il reçoit une requête, renvoie une <em>réponse</em> au client</li>
+</ul>
+<figure>
+<img src="wiki-images/HTTP.png" alt="Illustration du protocole HTTP" /><figcaption>Illustration du protocole HTTP</figcaption>
+</figure>
+<p>Avec Node.js ou Express, cela se traduit dans le code. Ce code est extrait d'une application Express :</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">app</span>.<span class="at">get</span>(<span class="st">&#39;/&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="va">res</span>.<span class="at">send</span>(<span class="st">&#39;Hello World&#39;</span>)
+<span class="op">}</span>)</code></pre></div>
+<p>Ce code indique comment doit se comporter le serveur, lorsqu'il reçoit une requête sur l'URL <code>/</code>. La fonction en paramètre est exécutée à chaque requête sur <code>/</code>.</p>
+<p>Les paramètres de cette fonction sont :</p>
+<ul>
+<li><code>req</code>, un objet qui contient les informations sur la requête reçue du client. Par exemple, quelle URL a été demandée.</li>
+<li><code>res</code>, un objet qui contient les informations sur la réponse que le serveur <em>va envoyer</em> au client. L'envoi effectif de la réponse se fait en appelant <code>res.send()</code> comme ci-dessus</li>
+</ul>
+<blockquote>
+<p>Rends toi dans le dossier <code>exemples/serveur/</code>.</p>
+<ul>
+<li>Lance la commande <code>npm install</code>, <em>la 1ère fois seulement</em>.</li>
+<li>Lance le serveur avec <code>node exemple1-base.js</code>. Pour l'interrompre: Ctrl+C</li>
+<li>Ouvre <code>exemple1-base.js</code> pour examiner le code et <em>surtout</em> les commentaires.</li>
+<li><strong>Fais le challenge</strong>, qui consiste à gérer une 3ème URL, en plus des deux fournies de base.</li>
 </ul>
 </blockquote>
 </body>

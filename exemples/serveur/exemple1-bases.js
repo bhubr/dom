@@ -9,9 +9,10 @@ const app = express()
  * quand elle reçoit une requête sur l'URL / (racine du site)
  * Le 1er argument est une URL, le 2ème est une fonction,
  * qui est appelée à chaque fois qu'une requête est reçue
- * sur l'URL du 1er argument.
+ * sur l'URL du 1er argument. C'est une "fonction de rappel"
+ * ou callback.
  *
- * On appelle cela une ROUTE.
+ * L'association d'une URL et d'un callback est appelée une ROUTE.
  */
 app.get('/', (req, res) => {
   res.send('Hello World')
@@ -34,6 +35,7 @@ app.get('/about', traiterRequeteAbout)
  * route, associée à l'URL /news, et qui renvoie la
  * chaîne 'Nothing new under the sun'
  */
+// TON CODE ICI
 
 
 /**

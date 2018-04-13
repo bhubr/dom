@@ -33,4 +33,14 @@ blockquote {
 }
 img {
   max-width: 100%;
+  border: 1px solid #fafafa;
+}
+figcaption {
+  text-align: center;
+  border: 1px solid #fafafa;
+  font-size: 12px;
+  color: #666;
+}
+h2 {
+  margin-top: 80px;
 }
