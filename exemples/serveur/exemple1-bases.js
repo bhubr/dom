@@ -15,7 +15,7 @@ const app = express()
  * L'association d'une URL et d'un callback est appelée une ROUTE.
  */
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.send('<h1>Hello World</h1>')
 })
 
 /**
