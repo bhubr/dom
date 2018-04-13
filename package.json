@@ -1,0 +1,25 @@
+{
+  "name": "web-docs",
+  "version": "0.0.1",
+  "description": "* La doc dans `index.html` * Un exemple/exercice dans `exemples/elements/index.html`",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-pandoc": "^0.2.2",
+    "gulp-watch": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhubr/dom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhubr/dom/issues"
+  },
+  "homepage": "https://github.com/bhubr/dom#readme"
+}
