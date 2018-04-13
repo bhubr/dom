@@ -6,8 +6,11 @@ function showCounterValue(num) {
 }
 
 function getAndShowCounter() {
+  // Envoi de la requête
   fetch('/counter')
   .then(res => res.text())
+  // Appelle showCounterValue avec la valeur serverCounter
+  // que le serveur nous a renvoyé
   .then(serverCounter => showCounterValue(serverCounter))
 }
 
@@ -20,6 +23,6 @@ const buttons = document.getElementsByTagName('button')
 buttons[0].addEventListener('click', e => {
   // Pas besoin de preventDefault() car ce bouton ne nous fait pas sortir
   // de la page.
-  // On va juste lancer la requête@
+  // On va juste lancer la requête
   getAndShowCounter()
 })
