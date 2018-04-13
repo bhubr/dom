@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Client-serveur #4</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <h1>Echange client-serveur #4 - formulaire envoyé par POST</h1>
+    <p>Fichier html: <code>public/exemple9/index.html</code> Script: <a href="/js/script.js">script</a>.<p>
+    <p>
+      Dans cet exemple, on va envoyer des données au serveur,
+      serveur</strong>, <strong>cette fois par POST</strong>.
+    </p>
+
+    <p>Le serveur va renvoyer une réponse: l'utilisateur pourra être inscrit si:<ul>
+      <li>Le mot de passe a au moins 4 caractères</li>
+      <li>Personne ne s'est déjà inscrit avec l'email renseigné</li>
+    </ul>.</p>
+
+    <form id="form">
+      <h3>Inscription</h3>
+      <div id="alert"></div>
+      <label for="name">Ton nom</label>
+      <input id="name" name="name" placeholder="Saisis ton nom" />
+      <label for="email">Ton email</label>
+      <input id="email" name="email" placeholder="Saisis ton email" />
+      <label for="password">Ton mot de passe</label>
+      <input type="password" id="password" name="password" placeholder="Saisis ton mot de passe (4 car. min)" />
+
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <div>
+      <h3>Résultats</h3>
+    </div>
+
+
+
+    <script src="/js/script.js"></script>
+
+  </body>
+</html>
