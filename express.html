@@ -83,16 +83,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Les paramètres de cette fonction sont :</p>
 <ul>
 <li><code>req</code>, un objet qui contient les informations sur la requête reçue du client. Par exemple, quelle URL a été demandée.</li>
-<li><code>res</code>, un objet qui contient les informations sur la réponse que le serveur <em>va envoyer</em> au client. L'envoi effectif de la réponse se fait en appelant <code>res.send()</code> comme ci-dessus</li>
+<li><code>res</code>, un objet qui contient les informations sur la réponse que le serveur <em>va envoyer</em> au client. L'envoi effectif de la réponse se fait en appelant <code>res.send()</code> comme ci-dessus.</li>
 </ul>
 <blockquote>
 <p>Rends toi dans le dossier <code>exemples/serveur/</code>.</p>
 <ul>
 <li>Lance la commande <code>npm install</code>, <em>la 1ère fois seulement</em>.</li>
 <li>Lance le serveur avec <code>node exemple1-base.js</code>. Pour l'interrompre: Ctrl+C</li>
-<li>Ouvre <code>exemple1-base.js</code> pour examiner le code et <em>surtout</em> les commentaires.</li>
-<li><strong>Fais le challenge</strong>, qui consiste à gérer une 3ème URL, en plus des deux fournies de base.</li>
 </ul>
+</blockquote>
+<p>Une fois le serveur lancé, visite les URL <a href="http://localhost:4000" class="uri">http://localhost:4000</a> et <a href="http://localhost:4000/about" class="uri">http://localhost:4000/about</a>.</p>
+<p>Quelque chose doit s'afficher à chaque fois. Maintenant, si tu visites <a href="http://localhost:4000/nimporte-quoi" class="uri">http://localhost:4000/nimporte-quoi</a>, tu obtiens le message <code>Cannot GET /nimporte-quoi</code> : lorsque le serveur reçoit une URL qui n'a pas été prise en compte par un <code>app.get()</code>, il va renvoyer une erreur, indiquant que la page n'existe pas. Tu peux obtenir des détails sur cette erreur en ouvrant la console (F12) et en allant sur l'onglet Network ou Réseau (il faut recharger la page) :</p>
+<figure>
+<img src="wiki-images/express-404-chrome.png" alt="Détails de l&#39;erreur, dans Google Chrome" /><figcaption>Détails de l'erreur, dans Google Chrome</figcaption>
+</figure>
+<p>Dans l'unique ligne de la liste de requêtes/réponses au serveur, il y a une colonne &quot;Status&quot; où est indiqué &quot;404 Not Found&quot;. Le code 404 est un &quot;code de statut&quot; numérique, &quot;Not Found&quot; est une description plus explicite sous forme d'une chaîne de caractères.</p>
+<blockquote>
+<p>Regarde les exemples sous <code>exemples/serveur</code>, tous préfixés par <code>exempleN</code>. Je n'ai pas eu le temps de faire plus de doc que les commentaires dans le code...</p>
 </blockquote>
 </body>
 </html>
